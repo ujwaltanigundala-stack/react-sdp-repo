@@ -23,7 +23,7 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const existingRegistrations = JSON.parse(sessionStorage.getItem('customerRegistrations')) || [];
+    const existingRegistrations = JSON.parse(localStorage.getItem('customerRegistrations')) || [];
     
     const newRegistration = {
       ...formData,
@@ -33,7 +33,7 @@ const Registration = () => {
     
     existingRegistrations.push(newRegistration);
     
-    sessionStorage.setItem('customerRegistrations', JSON.stringify(existingRegistrations));
+    localStorage.setItem('customerRegistrations', JSON.stringify(existingRegistrations));
     
     console.log('Registration saved:', newRegistration);
     alert('Registration submitted successfully and saved!');
