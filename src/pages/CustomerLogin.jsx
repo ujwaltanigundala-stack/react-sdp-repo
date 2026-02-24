@@ -28,17 +28,20 @@ const CustomerLogin = () => {
     
     if (customer) 
     {
+      // mark customer as logged in and save their details for later use
       sessionStorage.setItem('isCustomer', 'true');
+      sessionStorage.setItem('customerData', JSON.stringify(customer));
       alert(`Login successful! Welcome, ${customer.fullName}!`);
       console.log('Login successful:', customer);
       setFormData({
         username: '',
         password: '',
       });
-      navigate('/');
+      // navigate directly to the customer dashboard home
+      navigate('/customer/home');
       window.location.reload();
     } 
-    else 
+     else 
       {
       alert('Invalid username or password. Please try again.');
       console.log('Login failed: Invalid credentials');
