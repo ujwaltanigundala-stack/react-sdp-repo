@@ -1,4 +1,4 @@
-import { BrowserRouter} from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './App.css';
 import MainNavBar from './pages/MainNavBar';
@@ -12,7 +12,6 @@ function App() {
   const [isCustomer, setIsCustomer] = useState(false);
 
   useEffect(() => {
-    // Check sessionStorage for user role
     const adminStatus = sessionStorage.getItem('isAdmin') === 'true';
     const managerStatus = sessionStorage.getItem('isManager') === 'true';
     const customerStatus = sessionStorage.getItem('isCustomer') === 'true';
@@ -23,12 +22,12 @@ function App() {
   }, []);
 
   return (
-     <BrowserRouter>
+     <HashRouter>
          {isAdmin && <AdminNavBar/>}
          {isManager && <ManagerNavBar/>}
          {isCustomer && <CustomerNavBar/>}
          {!isAdmin && !isManager && !isCustomer && <MainNavBar/>}
-     </BrowserRouter>
+     </HashRouter>
   );
 }
 
